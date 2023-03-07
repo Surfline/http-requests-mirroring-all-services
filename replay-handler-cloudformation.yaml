@@ -159,7 +159,7 @@ Resources:
     Type: 'AWS::AutoScaling::LaunchConfiguration'
     Properties:
       KeyName: !If [KeyNameEmpty, !Ref 'AWS::NoValue', !Ref KeyName]
-      ImageId: 'ami-0c934fb9557962e61'
+      ImageId: 'ami-08a34ff79ddd5673f'
       SecurityGroups:
         - !Ref InstanceSecurityGroup
       InstanceType: !Ref InstanceType
