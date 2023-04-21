@@ -24,6 +24,7 @@ import (
 	"net"
 	"net/http"
 	"os"
+	"strings"
 	"time"
 
 	"github.com/google/gopacket"
@@ -154,8 +155,8 @@ func forwardRequest(req *http.Request, reqSourceIP string, reqDestionationPort s
 		forwardReq.Header.Set("X-Forwarded-Host", req.Host)
 	}
 
-	// Keep the host header
-	forwardReq.Host = req.Host
+	// Keep the host header and mutate it for staging
+	forwardReq.Host = strings.Replace(req.Host, "prod", "staging", 1)
 
 	// Execute the new HTTP request
 	httpClient := &http.Client{}
